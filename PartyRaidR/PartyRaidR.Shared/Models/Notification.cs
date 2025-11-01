@@ -9,6 +9,30 @@
 
     public class Notification : IDbEntity<Notification>
     {
+        public Notification()
+        {
+            Id = Guid.Empty.ToString();
+            Title = string.Empty;
+            Text = string.Empty;
+            UserId = string.Empty;
+            EventId = string.Empty;
+            Type = NotificationType.General;
+            DateCreated = DateTime.Now;
+            IsRead = false;
+        }
+
+        public Notification(Guid id, string title, string text, string userId, string eventId, NotificationType type, DateTime dateCreated, bool isRead)
+        {
+            Id = id.ToString();
+            Title = title;
+            Text = text;
+            UserId = userId;
+            EventId = eventId;
+            Type = type;
+            DateCreated = dateCreated;
+            IsRead = isRead;
+        }
+
         public string Id { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
