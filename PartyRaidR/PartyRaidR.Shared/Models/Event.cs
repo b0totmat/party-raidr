@@ -1,5 +1,15 @@
 ﻿namespace PartyRaidR.Shared.Models
 {
+    public enum EventCategory
+    {
+        None = 0,
+        OutdoorsActivity = 1,
+        IndoorsActivity = 2,
+        Concert = 3,
+        Festival = 4,
+        Party = 5
+    }
+
     public class Event : IDbEntity<Event>
     {
         public Event()
@@ -10,14 +20,14 @@
             StartingDate = DateTime.Now;
             EndingDate = DateTime.Now;
             PlaceId = string.Empty;
-            EventCategoryId = string.Empty;
+            Category = EventCategory.None;
             AuthorId = string.Empty;
             Room = 0;
             TicketPrice = 0;
             DateCreated = DateTime.Now;
         }
 
-        public Event(Guid id, string title, string description, DateTime startingDate, DateTime endingDate, string placeId, string eventCategoryId, string authorId, int room, decimal ticketPrice, DateTime dateCreated)
+        public Event(Guid id, string title, string description, DateTime startingDate, DateTime endingDate, string placeId, EventCategory category, string authorId, int room, decimal ticketPrice, DateTime dateCreated)
         {
             Id = id.ToString();
             Title = title;
@@ -25,7 +35,7 @@
             StartingDate = startingDate;
             EndingDate = endingDate;
             PlaceId = placeId;
-            EventCategoryId = eventCategoryId;
+            Category = category;
             AuthorId = authorId;
             Room = room;
             TicketPrice = ticketPrice;
@@ -38,7 +48,7 @@
         public DateTime StartingDate { get; set; }
         public DateTime EndingDate { get; set; }
         public string PlaceId { get; set; }
-        public string EventCategoryId { get; set; }
+        public EventCategory Category { get; set; }
         public string AuthorId { get; set; }
         public int Room { get; set; }
         public decimal TicketPrice { get; set; }

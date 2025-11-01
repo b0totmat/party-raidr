@@ -1,5 +1,11 @@
 ﻿namespace PartyRaidR.Shared.Models
 {
+    public enum UserRole
+    {
+        User = 0,
+        Admin = 1
+    }
+
     public class User : IDbEntity<User>
     {
         public User()
@@ -10,11 +16,11 @@
             PasswordHash = string.Empty;
             ProfilePictureUrl = string.Empty;
             RegisterDate = DateTime.Now;
-            RoleId = string.Empty;
+            Role = UserRole.User;
             CityId = string.Empty;
         }
 
-        public User(Guid id, string username, string email, string passwordHash, string profilePictureUrl, DateTime registerDate, string roleId, string cityId)
+        public User(Guid id, string username, string email, string passwordHash, string profilePictureUrl, DateTime registerDate, UserRole role, string cityId)
         {
             Id = id.ToString();
             Username = username;
@@ -22,7 +28,7 @@
             PasswordHash = passwordHash;
             ProfilePictureUrl = profilePictureUrl;
             RegisterDate = registerDate;
-            RoleId = roleId;
+            Role = role;
             CityId = cityId;
         }
 
@@ -32,7 +38,7 @@
         public string PasswordHash { get; set; }
         public string ProfilePictureUrl { get; set; }
         public DateTime RegisterDate { get; set; }
-        public string RoleId { get; set; }
+        public UserRole Role { get; set; }
         public string CityId { get; set; }
     }
 }
