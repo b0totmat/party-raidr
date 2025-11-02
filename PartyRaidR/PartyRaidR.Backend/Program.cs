@@ -12,8 +12,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "PartyRaidRCors", policy =>
     {
         policy.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod();
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     }
   )
 );
