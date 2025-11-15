@@ -40,7 +40,8 @@ namespace PartyRaidR.Backend.Extensions
                 options.UseMySql(
                     connectionString,
                     ServerVersion.AutoDetect(connectionString),
-                    mySqlOptions => mySqlOptions.EnableRetryOnFailure().UseNetTopologySuite()
+                    mySqlOptions => mySqlOptions.EnableRetryOnFailure()
+                                                .UseNetTopologySuite()
                 )
             );
         }
