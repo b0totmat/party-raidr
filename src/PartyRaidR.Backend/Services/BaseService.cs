@@ -36,6 +36,9 @@ namespace PartyRaidR.Backend.Services
             if (entity.HasId)
                 throw new Exception($"There is already a(n) {nameof(dto)} with the given ID.");
 
+            // Generate a new ID for new entities
+            entity.Id = Guid.CreateVersion7().ToString();
+
             await _repo.InsertAsync(entity);
 
             await _repo.SaveChangesAsync();
