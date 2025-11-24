@@ -52,7 +52,7 @@ namespace PartyRaidR.Backend.Services
             if (entity == default)
                 throw new KeyNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
 
-            _repo.Update(entity);
+            _repo.UpdateAsync(entity);
 
             await _repo.SaveChangesAsync();
 
@@ -68,7 +68,7 @@ namespace PartyRaidR.Backend.Services
             if (entity == default)
                 throw new KeyNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
 
-            _repo.Delete(entity);
+            _repo.DeleteAsync(entity);
 
             await _repo.SaveChangesAsync();
 

@@ -29,10 +29,10 @@ namespace PartyRaidR.Backend.Repos.Base
         public async Task InsertAsync(TEntity entity) =>
             await _dbSet!.AddAsync(entity);
 
-        public void Update(TEntity entity) =>
+        public void UpdateAsync(TEntity entity) =>
             _dbSet!.Update(entity);
 
-        public void Delete(TEntity entity) =>
+        public void DeleteAsync(TEntity entity) =>
             _dbSet!.Remove(entity);
 
         public async Task<int> SaveChangesAsync() =>
