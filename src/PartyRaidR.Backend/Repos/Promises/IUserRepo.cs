@@ -5,5 +5,6 @@ namespace PartyRaidR.Backend.Repos.Promises
 {
     public interface IUserRepo : IRepositoryBase<User>
     {
+        Task<bool> EmailExistsAsync(string email);
     }
 }
