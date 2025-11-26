@@ -10,6 +10,6 @@ namespace PartyRaidR.Backend.Services
         Task<IEnumerable<TDto>> GetAllAsync();
         Task<TDto> AddAsync(TDto dto);
         Task<TDto> UpdateAsync(TDto dto);
-        Task<TDto> DeleteAsync(string id);
+        Task DeleteAsync(string id);
     }
 }

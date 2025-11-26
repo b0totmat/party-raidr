@@ -19,9 +19,8 @@ namespace PartyRaidR.Backend.Repos.Base
         }
 
         // CRUD Operations
-        // An empty entity is returned if no entity is found with the given ID.
-        public async Task<TEntity> GetByIdAsync(string id) =>
-            await _dbSet!.FindAsync(id) ?? new TEntity();
+        public async Task<TEntity?> GetByIdAsync(string id) =>
+            await _dbSet!.FindAsync(id);
 
         public async Task<IEnumerable<TEntity>> GetAllAsync() =>
             await _dbSet!.ToListAsync();

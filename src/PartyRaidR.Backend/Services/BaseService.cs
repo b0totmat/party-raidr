@@ -21,7 +21,7 @@ namespace PartyRaidR.Backend.Services
         {
             try
             {
-                TModel model = await _repo.GetByIdAsync(id);
+                TModel? model = await _repo.GetByIdAsync(id) ?? throw new EntityNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
                 return _assembler.ConvertToDto(model);
             }
             catch(Exception)
@@ -77,10 +77,10 @@ namespace PartyRaidR.Backend.Services
 
             try
             {
-                TModel entity = await _repo.GetByIdAsync(model.Id);
+                TModel? entity = await _repo.GetByIdAsync(model.Id);
 
-                if (entity == default)
-                    throw new KeyNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
+                if (entity is null)
+                    throw new EntityNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
 
                 _repo.UpdateAsync(entity);
 
@@ -95,26 +95,22 @@ namespace PartyRaidR.Backend.Services
             return new TDto();
         }
 
-        public virtual async Task<TDto> DeleteAsync(string id)
+        public virtual async Task DeleteAsync(string id)
         {
             try
             {
-                TModel entity = await _repo.GetByIdAsync(id);
+                TModel? entity = await _repo.GetByIdAsync(id);
 
-                if (entity == default)
-                    throw new KeyNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
-
-                _repo.DeleteAsync(entity);
+                if (entity is null)
+                    throw new EntityNotFoundException($"Could not found a(n) {nameof(TModel)} with the given ID.");
+                else
+                    _repo.DeleteAsync(entity);
 
                 await _repo.SaveChangesAsync();
-
-                return _assembler.ConvertToDto(entity);
             }
             catch (Exception)
             {
             }
-
-            return new TDto();
         }
     }
 }
