@@ -1,5 +1,5 @@
 ﻿using PartyRaidR.Shared.Models;
-using PartyRaidR.Shared.Dtos;
+using PartyRaidR.Shared.Dtos.AuthenticationRequests;
 
 namespace PartyRaidR.Shared.Converters
 {

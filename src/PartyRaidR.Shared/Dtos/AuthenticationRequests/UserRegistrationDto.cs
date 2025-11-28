@@ -1,4 +1,4 @@
-﻿namespace PartyRaidR.Shared.Dtos
+﻿namespace PartyRaidR.Shared.Dtos.AuthenticationRequests
 {
     public class UserRegistrationDto : UserDto
     {
