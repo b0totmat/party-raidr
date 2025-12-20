@@ -27,10 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PartyRaidR.Shared\PartyRaidR.Shared.csproj" />
   </ItemGroup>
 
