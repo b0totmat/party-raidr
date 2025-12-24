@@ -5,19 +5,19 @@ using PartyRaidR.Shared.Dtos.AuthenticationRequests;
 
 namespace PartyRaidR.Backend.Controllers
 {
-    [Controller]
+    [ApiController]
     [Route("api/[controller]")]
-    public class AuthenticationController : ControllerBase
+    public class AuthController : ControllerBase
     {
-        private readonly IAuthenticationService _service;
+        private readonly IUserAuthService _service;
 
-        public AuthenticationController(AuthenticationService authService)
+        public AuthController(IUserAuthService authService)
         {
             _service = authService;
         }
 
-        [HttpGet("register")]
-        public async Task<object> RegisterAsync(UserRegistrationDto newUser)
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterAsync(UserRegistrationDto newUser)
         {
             var result = await _service.RegisterAsync(newUser);
 

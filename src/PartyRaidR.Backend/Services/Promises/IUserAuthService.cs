@@ -4,7 +4,7 @@ using PartyRaidR.Shared.Models.Responses;
 
 namespace PartyRaidR.Backend.Services.Promises
 {
-    public interface IAuthenticationService
+    public interface IUserAuthService
     {
         Task<ServiceResponse<UserDto>> RegisterAsync(UserRegistrationDto user);
         Task<ServiceResponse<string>> LoginAsync(UserLoginDto user);

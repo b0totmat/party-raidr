@@ -11,16 +11,16 @@ using BCrypt.Net;
 
 namespace PartyRaidR.Backend.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class UserAuthService : IUserAuthService
     {
         private readonly IUserRepo _userRepo;
         private readonly UserAssembler _userAssembler;
         private readonly UserRegistrationAssembler _userRegistrationAssembler;
 
-        public AuthenticationService(IUserRepo userRepo, UserAssembler userAssembler)
+        public UserAuthService(IUserRepo userRepo)
         {
             _userRepo = userRepo;
-            _userAssembler = userAssembler;
+            _userAssembler = new UserAssembler();
             _userRegistrationAssembler = new UserRegistrationAssembler();
         }
 

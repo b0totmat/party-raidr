@@ -2,6 +2,8 @@
 using PartyRaidR.Backend.Context;
 using PartyRaidR.Backend.Repos;
 using PartyRaidR.Backend.Repos.Promises;
+using PartyRaidR.Backend.Services;
+using PartyRaidR.Backend.Services.Promises;
 
 namespace PartyRaidR.Backend.Extensions
 {
@@ -13,6 +15,7 @@ namespace PartyRaidR.Backend.Extensions
             services.ConfigureCors();
             services.AddAppDbContext(connectionString);
             services.ConfigureRepositories();
+            services.ConfigureServices();
         }
 
         private static void ConfigureCors(this IServiceCollection services)
@@ -54,6 +57,11 @@ namespace PartyRaidR.Backend.Extensions
             services.AddScoped<INotificationRepo, NotificationRepo>();
             services.AddScoped<IPlaceRepo, PlaceRepo>();
             services.AddScoped<IUserRepo, UserRepo>();
+        }
+
+        private static void ConfigureServices(this IServiceCollection services)
+        {
+            services.AddScoped<IUserAuthService, UserAuthService>();
         }
     }
 }
