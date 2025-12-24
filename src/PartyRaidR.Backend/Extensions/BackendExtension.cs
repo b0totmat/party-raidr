@@ -62,6 +62,7 @@ namespace PartyRaidR.Backend.Extensions
         private static void ConfigureServices(this IServiceCollection services)
         {
             services.AddScoped<IUserAuthService, UserAuthService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
     }
 }
