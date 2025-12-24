@@ -14,12 +14,14 @@ namespace PartyRaidR.Backend.Services
     public class UserAuthService : IUserAuthService
     {
         private readonly IUserRepo _userRepo;
+        private readonly ITokenService _tokenService;
         private readonly UserAssembler _userAssembler;
         private readonly UserRegistrationAssembler _userRegistrationAssembler;
 
-        public UserAuthService(IUserRepo userRepo)
+        public UserAuthService(IUserRepo userRepo, ITokenService tokenService)
         {
             _userRepo = userRepo;
+            _tokenService = tokenService;
             _userAssembler = new UserAssembler();
             _userRegistrationAssembler = new UserRegistrationAssembler();
         }
@@ -33,15 +35,32 @@ namespace PartyRaidR.Backend.Services
                 return new ServiceResponse<string>
                 {
                     Success = false,
-                    Message = "Login failed: No user found with the provided email address.",
-                    StatusCode = 404
+                    Message = "Login failed: Incorrect email or password.",
+                    StatusCode = 401
                 };
             }
             else
             {
                 if(BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
                 {
+                    string token = _tokenService.GenerateToken(user);
 
+                    return new ServiceResponse<string>
+                    {
+                        Data = token,
+                        Success = true,
+                        StatusCode = 200,
+                        Message = "Login successful."
+                    };
+                }
+                else
+                {
+                    return new ServiceResponse<string>
+                    {
+                        Success = false,
+                        StatusCode = 401,
+                        Message = "Login failed: Incorrect email or password."
+                    };
                 }
             }
         }
