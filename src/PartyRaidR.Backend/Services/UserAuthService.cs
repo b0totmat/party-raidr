@@ -15,14 +15,12 @@ namespace PartyRaidR.Backend.Services
     {
         private readonly IUserRepo _userRepo;
         private readonly ITokenService _tokenService;
-        private readonly UserAssembler _userAssembler;
         private readonly UserRegistrationAssembler _userRegistrationAssembler;
 
         public UserAuthService(IUserRepo userRepo, ITokenService tokenService)
         {
             _userRepo = userRepo;
             _tokenService = tokenService;
-            _userAssembler = new UserAssembler();
             _userRegistrationAssembler = new UserRegistrationAssembler();
         }
 
@@ -109,18 +107,27 @@ namespace PartyRaidR.Backend.Services
             }
         }
 
-        private async Task<bool> IsUserValid(UserRegistrationDto userRequest)
+        private async Task<bool> IsUserValid(UserRegistrationDto request)
         {
-            bool userExists = await _userRepo.EmailExistsAsync(userRequest.Email);
+            bool emailExists = await _userRepo.EmailExistsAsync(request.Email),
+                 usernameExists = await _userRepo.GetByUsernameAsync(request.Username) is not null;
 
-            if (userExists)
-                throw new RegistrationWithTakenEmailAddressException($"Email address {userRequest.Email} is already in use.");
+            if (emailExists)
+                throw new RegistrationWithTakenEmailAddressException($"Email address {request.Email} is already in use.");
 
-            if (!IsEmailValid(userRequest.Email))
+            if (usernameExists)
+                throw new RegistrationWithTakenUsernameException("The given username is already in use.");
+
+            if (!IsEmailValid(request.Email))
                 throw new InvalidEmailAddressException("Invalid email address.");
 
-            if (!IsPasswordValid(userRequest.Password))
+            if (!IsPasswordValid(request.Password))
                 throw new InvalidPasswordException("Invalid password.");
+
+            // Check if user is at least 16 years old
+            // Temporary solution
+            if (request.BirthDate > DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-16)))
+                throw new UserDoesNotMeetRequiredAgeException("User must be at least 16 years old to register.");
 
             return true;
         }

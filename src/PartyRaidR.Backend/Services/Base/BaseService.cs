@@ -4,7 +4,7 @@ using PartyRaidR.Shared.Assemblers;
 using PartyRaidR.Shared.Models;
 using PartyRaidR.Shared.Models.Responses;
 
-namespace PartyRaidR.Backend.Services
+namespace PartyRaidR.Backend.Services.Base
 {
     public class BaseService<TModel, TDto> : IBaseService<TModel, TDto>
         where TModel : class, IDbEntity<TModel>, new()
