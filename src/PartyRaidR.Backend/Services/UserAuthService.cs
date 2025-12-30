@@ -109,10 +109,14 @@ namespace PartyRaidR.Backend.Services
 
         private async Task<bool> IsUserValid(UserRegistrationDto userRequest)
         {
-            bool userExists = await _userRepo.EmailExistsAsync(userRequest.Email);
+            bool emailExists = await _userRepo.EmailExistsAsync(userRequest.Email),
+                 usernameExists = await _userRepo.GetByUsernameAsync(userRequest.Username) is not null;
 
-            if (userExists)
+            if (emailExists)
                 throw new RegistrationWithTakenEmailAddressException($"Email address {userRequest.Email} is already in use.");
+
+            if (usernameExists)
+                throw new RegistrationWithTakenUsernameException("The given username is already in use.");
 
             if (!IsEmailValid(userRequest.Email))
                 throw new InvalidEmailAddressException("Invalid email address.");

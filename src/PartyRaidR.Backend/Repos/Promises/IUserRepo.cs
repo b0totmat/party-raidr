@@ -7,5 +7,6 @@ namespace PartyRaidR.Backend.Repos.Promises
     {
         Task<bool> EmailExistsAsync(string email);
         Task<User?> GetByEmailAsync(string email);
+        Task<User?> GetByUsernameAsync(string username);
     }
 }
