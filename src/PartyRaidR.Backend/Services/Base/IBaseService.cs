@@ -1,7 +1,7 @@
 ﻿using PartyRaidR.Shared.Models;
 using PartyRaidR.Shared.Models.Responses;
 
-namespace PartyRaidR.Backend.Services
+namespace PartyRaidR.Backend.Services.Base
 {
     public interface IBaseService<TModel, TDto>
         where TModel : class, IDbEntity<TModel>, new()
