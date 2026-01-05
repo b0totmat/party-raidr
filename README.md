@@ -34,7 +34,9 @@ After authentication with an email and a password, they can:
 
 To post a new event, the user has to give the event a title, a description, a place and a category. If the user wants to post an event at a place that does not exist in the database yet, one needs to create it by providing the name, the city, the address, a category (pub, public space etc.), as well as coordinates. Of course, it is not required to set the coordinates manually. A map is provided, on which the user can browse the place. Furthermore, the use of an API is on my plan list, which would help the user look for the place by address.
 
-Also, visitors of the website (or the mobile app) can browse events, even in a filtered list. Clicking on an event in the list would provide the user with further information about the event in a pop-up panel.
+Also, visitors of the website (or the mobile app) can browse events, even in a filtered list - without logging in. Clicking on an event in the list would provide the user with further information about the event in a pop-up panel.
+
+Finding events on an interactive map is another great feature of the application, for which I use *Leaflet.* I have no experience with maps on the frontend, and, frankly, this is one of my main motivations for Party RaidR. I want to become familiar with working with maps, more packages and APIs.
 
 I am also planning to make a *random event* feature, which provides the user with a random event near their location.
 
