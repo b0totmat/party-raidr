@@ -2,11 +2,12 @@
 
 ![Status](https://img.shields.io/badge/Status-In--Development-yellow?style=for-the-badge&logo=codepen)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
 ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## 📈 Motivation
 
@@ -22,7 +23,14 @@ Once registered, the user can post new events such as parties, gatherings, conce
 
 This is a really great option for finding activities in our free time, wether it be outdoors or indoors.
 
-### ✨ Features
+## 💻 Tech Stack
+
++ Frontend: Vue JS & MAUI
++ Backend: .NET 9 (C#)
++ Databse: MySQL
++ Infrastructure: Docker - The whole development environment and the database are containerized for portability and consistent running.
+
+## ✨ Features
 
 There are two types of users. Basic users, and administrators. Basic users have access to a number of features.
 
@@ -46,14 +54,6 @@ Administrators would have the ability to:
 + Edit user data.
 
 A moderation-panel is provided for admin users.
-
-## 🚀 Future
-
-As mentioned above, the app is still under development. Therefore, I plan on concentrating on my current goals, which I defined in a document. Though, I do have some plans on how I could make the app even better.
-
-First of all, I would like to heavily build on community, as it can spread the popularity of the app. To make it happen, I would like to introduce a system using which users can keep contact. I imagined something like "friendship", or following others.
-
-Nextly, categories. Currently, there are a few categories for places and events, and they are stored as database models with a couple of set values. However, I would like users to be able to add their own categories. It would not be a huge challenge to carry out at all. However, at the moment I do not have any idea what I would like it to look like. I can not let people to just create new categories any time they want. I could set up a system where users can post their new category ideas and administrators would need to accept is. Nevertheless, after some time it would require a lot of unnecessary effort from the moderation team, as of course I do not want a lot of categories for users to choose from.
 
 ## 🧱 Project structure
 
@@ -82,6 +82,14 @@ I do not have experience with using maps on the frontend, so I am very excited t
 #### 📱 Mobile
 
 The other part of the frontend is a mobile application. It was the main idea. Although I have no experience with mobile technologies at all, I am very determined and I already have a lot of ideas. The project is going to be made using .NET MAUI.
+
+## 🚀 Future
+
+As mentioned above, the app is still under development. Therefore, I plan on concentrating on my current goals, which I defined in a document. Though, I do have some plans on how I could make the app even better.
+
+First of all, I would like to heavily build on community, as it can spread the popularity of the app. To make it happen, I would like to introduce a system using which users can keep contact. I imagined something like "friendship", or following others.
+
+Nextly, categories. Currently, there are a few categories for places and events, and they are stored as database models with a couple of set values. However, I would like users to be able to add their own categories. It would not be a huge challenge to carry out at all. However, at the moment I do not have any idea what I would like it to look like. I can not let people to just create new categories any time they want. I could set up a system where users can post their new category ideas and administrators would need to accept is. Nevertheless, after some time it would require a lot of unnecessary effort from the moderation team, as of course I do not want a lot of categories for users to choose from.
 
 Branch guide (prefixes):
 + F - *Feature*
