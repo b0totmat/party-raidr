@@ -45,7 +45,7 @@ services:
             - ./PartyRaidR.Web:/app
             - /app/node_modules
         environment:
-            - VITE_API_URL=http://localhost:5000/api
+            - VITE_API_URL=http://localhost:8080/api
         depends_on:
             - backend
 volumes:

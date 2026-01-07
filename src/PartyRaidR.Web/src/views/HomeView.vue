@@ -1,6 +1,7 @@
 <script setup>
+  import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <h1>Party RaidR</h1>
+  <h2>Party RaidR</h2>
 </template>
