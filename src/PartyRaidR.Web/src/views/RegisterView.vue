@@ -8,7 +8,8 @@
     const date = ref(`${today.getFullYear()}-${displayMonth}-${today.getDate()}`)
 </script>
 <template>
-    <form class="w-75 mx-auto mt-5 px-3 pt-3 border">
+    <h1>Register</h1>
+    <form class="w-75 mx-auto mt-4 px-3 pt-3 border">
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="username" placeholder="Username">
             <label for="username">Username</label>

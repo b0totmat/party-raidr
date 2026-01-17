@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <h2>Party RaidR</h2>
+  <h1>Party RaidR</h1>
 </template>
