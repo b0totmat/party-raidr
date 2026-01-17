@@ -4,7 +4,9 @@ using PartyRaidR.Backend.Context;
 using PartyRaidR.Backend.Repos;
 using PartyRaidR.Backend.Repos.Promises;
 using PartyRaidR.Backend.Services;
+using PartyRaidR.Backend.Services.Base;
 using PartyRaidR.Backend.Services.Promises;
+using PartyRaidR.Shared.Assemblers;
 
 namespace PartyRaidR.Backend.Extensions
 {
@@ -17,6 +19,7 @@ namespace PartyRaidR.Backend.Extensions
             services.AddAppDbContext(connectionString);
             services.ConfigureRepositories();
             services.ConfigureServices();
+            services.ConfigureAssemblers();
 
             // Service can access the HTTP request
             services.AddHttpContextAccessor();
@@ -96,6 +99,20 @@ namespace PartyRaidR.Backend.Extensions
             services.AddScoped<IUserAuthService, UserAuthService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserContext, UserContext>();
+
+            // Model related services
+            services.AddScoped<IPlaceService, PlaceService>();
+        }
+
+        private static void ConfigureAssemblers(this IServiceCollection services)
+        {
+            services.AddScoped<ApplicationAssembler>();
+            services.AddScoped<CityAssembler>();
+            services.AddScoped<EventAssembler>();
+            services.AddScoped<NotificationAssembler>();
+            services.AddScoped<PlaceAssembler>();
+            services.AddScoped<UserAssembler>();
+            services.AddScoped<UserRegistrationAssembler>();
         }
     }
 }
